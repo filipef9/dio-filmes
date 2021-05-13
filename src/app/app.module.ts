@@ -26,7 +26,6 @@ import { FilmesModule } from './filmes/filmes.module';
     LayoutModule,
     MaterialModule,
     AppRoutingModule,
-    FilmesModule
   ],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'pt' }],
   bootstrap: [AppComponent]
