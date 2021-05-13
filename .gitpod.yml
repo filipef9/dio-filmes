@@ -3,8 +3,10 @@ image:
 
 # List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
 ports:
-  - port: 4200
+  - port: 4200 # Angular App
     onOpen: open-preview
+  - port: 3000 # Json Server
+    onOpen: ignore
 
 vscode:
   extensions:
