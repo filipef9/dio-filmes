@@ -5,17 +5,17 @@
       <mat-card-content>
         <mat-form-field class="full-width">
           <input matInput placeholder="Título *" name="titulo" formControlName="titulo">
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.required">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors?.required">
             This field is required.</mat-error>
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.minlength">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors?.minlength">
             Minimun of 2 characters.</mat-error>
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors && f.titulo.errors.maxlength">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.titulo.errors?.maxlength">
             Maximum of 256 characters.</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Link Foto" name="linkFoto" formControlName="linkFoto">
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.linkFoto.errors && f.linkFoto.errors.minlength">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.linkFoto.errors?.minlength">
             Minimun of 10 characters.</mat-error>
         </mat-form-field>
 
@@ -24,7 +24,7 @@
             formControlName="dataLancamento" readonly (click)="picker.open()">
           <mat-datepicker-toggle matSuffix [for]=" picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.dataLancamento.errors && f.dataLancamento.errors.required">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.dataLancamento.errors?.required">
             This field is required.</mat-error>
         </mat-form-field>
 
@@ -35,17 +35,17 @@
         <mat-form-field class="full-width">
           <input matInput placeholder="Nota IMDb *" type="number" min="0" max="10" step="1" name="notaImdb"
             formControlName="notaImdb">
-            <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors && f.notaImdb.errors.required">
-              This field is required.</mat-error>
-              <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors && f.notaImdb.errors.min">
-                Minimun of 0.</mat-error>
-              <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors && f.notaImdb.errors.max">
-                Maximum of 10.</mat-error>
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors?.required">
+            This field is required.</mat-error>
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors?.min">
+            Minimun of 0.</mat-error>
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.notaImdb.errors?.max">
+            Maximum of 10.</mat-error>
         </mat-form-field>
 
         <mat-form-field class="full-width">
           <input matInput placeholder="Link IMDb" name="linkImdb" formControlName="linkImdb">
-          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.linkImdb.errors && f.linkImdb.errors.minlength">
+          <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.linkImdb.errors?.minlength">
             Minimun of 10 characters.</mat-error>
         </mat-form-field>
 
@@ -58,7 +58,7 @@
             <mat-option value="Terror">Terror</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.genero.errors && f.genero.errors.required">
+        <mat-error *ngIf="(cadastro.touched || cadastro.dirty) && f.genero.errors?.required">
           This field is required.</mat-error>
       </mat-card-content>
 
