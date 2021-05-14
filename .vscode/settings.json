@@ -1,0 +1,15 @@
+{
+  "workbench.iconTheme": "vscode-icons",
+  "terminal.integrated.shell.linux": "/bin/bash",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.fontLigatures": false,
+  "editor.formatOnSave": true,
+  "editor.parameterHints.enabled": true,
+  "prettier.printWidth": 120,
+  "prettier.bracketSpacing": true,
+  "prettier.singleQuote": true,
+  "vsicons.dontShowNewVersionMessage": true
+}
