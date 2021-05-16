@@ -4,8 +4,8 @@
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'required')">
       This field is required.</mat-error>
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'minlength')">
-      Minimun of 2 characters.</mat-error>
+      Minimun of {{ validacao.validarLength(formControl, 'minlength') }} characters.</mat-error>
     <mat-error *ngIf="validacao.hasErrorValidar(formControl, 'maxlength')">
-      Maximum of 256 characters.</mat-error>
+      Maximum of {{ validacao.validarLength(formControl, 'maxlength') }} characters.</mat-error>
   </mat-form-field>
 </div>
