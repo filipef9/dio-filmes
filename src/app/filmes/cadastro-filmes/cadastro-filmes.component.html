@@ -5,42 +5,13 @@
       <mat-card-content>
         <dio-input-text titulo="Título *" [formGroup]="cadastro" controlName="titulo"></dio-input-text>
         <dio-input-text titulo="Link Foto" [formGroup]="cadastro" controlName="linkFoto"></dio-input-text>
-
-        <mat-form-field class="full-width">
-          <input matInput [matDatepicker]="picker" placeholder="Data de Lançamento *" name="dataLancamento"
-            formControlName="dataLancamento" readonly (click)="picker.open()">
-          <mat-datepicker-toggle matSuffix [for]=" picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error *ngIf="validacao.hasErrorValidar(f.dataLancamento, 'required')">
-            This field is required.</mat-error>
-        </mat-form-field>
-
+        <dio-input-date titulo="Data de Lançamento" [formGroup]="cadastro" controlName="dataLancamento">
+        </dio-input-date>
         <dio-input-textarea titulo="Descrição" [formGroup]="cadastro" controlName="descricao"></dio-input-textarea>
-
-        <mat-form-field class="full-width">
-          <input matInput placeholder="Nota IMDb *" type="number" min="0" max="10" step="1" name="notaImdb"
-            formControlName="notaImdb">
-          <mat-error *ngIf="validacao.hasErrorValidar(f.notaImdb, 'required')">
-            This field is required.</mat-error>
-          <mat-error *ngIf="validacao.hasErrorValidar(f.notaImdb, 'min')">
-            Minimun of 0.</mat-error>
-          <mat-error *ngIf="validacao.hasErrorValidar(f.notaImdb, 'max')">
-            Maximum of 10.</mat-error>
-        </mat-form-field>
-
+        <dio-input-number titulo="Nota IMDb *" [formGroup]="cadastro" controlName="notaImdb" minimo="0" maximo="10"
+          step="0.1"></dio-input-number>
         <dio-input-text titulo="Link IMDb" [formGroup]="cadastro" controlName="linkImdb"></dio-input-text>
-
-        <mat-form-field class="full-width">
-          <mat-select placeholder="Gênero *" formControlName="genero">
-            <mat-option value="Ação">Açao</mat-option>
-            <mat-option value="Aventura">Aventura</mat-option>
-            <mat-option value="Ficção Científica">Ficção Científica</mat-option>
-            <mat-option value="Romance">Romance</mat-option>
-            <mat-option value="Terror">Terror</mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-error *ngIf="validacao.hasErrorValidar(f.genero, 'required')">
-          This field is required.</mat-error>
+        <dio-input-select titulo="Gênero *" [formGroup]="cadastro" controlName="genero"></dio-input-select>
       </mat-card-content>
 
       <mat-card-actions>
