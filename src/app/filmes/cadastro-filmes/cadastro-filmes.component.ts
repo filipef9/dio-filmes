@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { FilmesService } from 'src/app/core/filmes.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
 import { ValidarCamposService } from 'src/app/shared/components/campos/validar-campos.service';
+import { Alerta } from 'src/app/shared/models/alerta';
 import { Filme } from 'src/app/shared/models/filme';
 
 @Component({
@@ -57,15 +58,18 @@ export class CadastroFilmesComponent implements OnInit {
 
   private salvar(filme: Filme): void {
     this.filmesService.salvar(filme).subscribe(() => {
-      console.log('FILME ADICIONADO COM SUCESSO!!!');
-      const dialogRef = this.dialog.open(AlertaComponent, {
+      const config = {
         data: {
           titulo: 'Sucesso!!!',
           mensagem: 'O filme foi cadastrado com sucesso!',
-          labelBtnSucesso: 'OK',
-          labelBtnCancelar: 'Cancelar'
-        }
-      });
+          labelBotaoSucesso: 'Ir para a listagem',
+          labelBotaoCancelar: 'Cadastrar um novo filme',
+          corBotaoCancelar: 'primary',
+          possuiBotaoFechar: true
+        } as Alerta
+      };
+
+      const dialogRef = this.dialog.open(AlertaComponent, config);
     },
       () => {
         console.log('ERROR AO SALVAR!!!');
