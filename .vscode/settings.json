@@ -1,15 +1,15 @@
 {
   "workbench.iconTheme": "vscode-icons",
   "terminal.integrated.shell.linux": "/bin/bash",
-  "editor.rulers": [
-    80,
-    120
-  ],
-  "editor.fontLigatures": false,
+  "editor.autoIndent": "full",
+  "editor.codeLens": false,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "line",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
   "editor.formatOnSave": true,
-  "editor.parameterHints.enabled": true,
-  "prettier.printWidth": 120,
-  "prettier.bracketSpacing": true,
-  "prettier.singleQuote": true,
+  "editor.minimap.enabled": false,
   "vsicons.dontShowNewVersionMessage": true
 }
