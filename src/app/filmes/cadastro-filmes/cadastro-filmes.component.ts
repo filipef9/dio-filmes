@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { FilmesService } from 'src/app/core/filmes.service';
 import { AlertaComponent } from 'src/app/shared/components/alerta/alerta.component';
 import { ValidarCamposService } from 'src/app/shared/components/campos/validar-campos.service';
@@ -21,7 +22,8 @@ export class CadastroFilmesComponent implements OnInit {
     public validacao: ValidarCamposService,
     public dialog: MatDialog,
     private fb: FormBuilder,
-    private filmesService: FilmesService
+    private filmesService: FilmesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -70,14 +72,30 @@ export class CadastroFilmesComponent implements OnInit {
       };
 
       const dialogRef = this.dialog.open(AlertaComponent, config);
+      dialogRef.afterClosed().subscribe((opcao: boolean) => {
+        if (opcao) {
+          this.router.navigateByUrl('filmes');
+        } else {
+          this.reiniciarForm();
+        }
+      });
     },
       () => {
-        console.log('ERROR AO SALVAR!!!');
+        const config = {
+          data: {
+            titulo: 'Erro ao cadastrar o filme!',
+            mensagem: 'Não foi possível cadastrar o filme.',
+            labelBotaoSucesso: 'Fechar',
+            corBotaoSucesso: 'warn'
+          } as Alerta
+        };
+
+        this.dialog.open(AlertaComponent, config);
       });
   }
 
   reiniciarForm(): void {
-
+    this.cadastro.reset();
   }
 
 }
