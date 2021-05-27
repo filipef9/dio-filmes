@@ -11,10 +11,24 @@ export class ListagemFilmesComponent implements OnInit {
 
   filmes: Filme[] = [];
 
+  page = 0
+  readonly limitFilmsByPage = 4;
+
   constructor(private filmesService: FilmesService) { }
 
-  ngOnInit() {
-    this.filmesService.listar().subscribe((filmes: Filme[]) => this.filmes = filmes);
+  ngOnInit(): void {
+    this.listarFilmes();
+  }
+
+  onScroll(): void {
+    this.listarFilmes();
+  }
+
+  private listarFilmes(): void {
+    this.page++;
+    this.filmesService
+      .listar(this.page, this.limitFilmsByPage)
+      .subscribe((filmes: Filme[]) => this.filmes = [...this.filmes, ...filmes]);
   }
 
 }
