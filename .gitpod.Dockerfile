@@ -9,3 +9,5 @@ RUN echo "nvm use default &>/dev/null" >> ~/.bashrc.d/51-nvm-fix
 
 RUN bash -c "npm install -g @angular/cli@8.3.5 &&\
     ng analytics off"
+
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
