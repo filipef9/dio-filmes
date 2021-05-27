@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://3000-pink-marten-zb9jqwkw.ws-us04.gitpod.io'
+  apiUrl: 'https://3000-amaranth-panda-mvlk6nq9.ws-us04.gitpod.io'
 };
 
 /*
