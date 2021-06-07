@@ -1,6 +1,5 @@
 {
   "workbench.iconTheme": "vscode-icons",
-  "terminal.integrated.shell.linux": "/bin/bash",
   "editor.autoIndent": "full",
   "editor.codeLens": false,
   "editor.cursorBlinking": "solid",
