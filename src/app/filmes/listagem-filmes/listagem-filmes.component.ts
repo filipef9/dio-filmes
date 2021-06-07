@@ -13,6 +13,9 @@ export class ListagemFilmesComponent implements OnInit {
   filmes: Filme[] = [];
   generos: string[] = [];
 
+  termo: string;
+  genero: string;
+
   page = 0
   readonly limitFilmsByPage = 4;
 
@@ -29,6 +32,16 @@ export class ListagemFilmesComponent implements OnInit {
       genero: ['']
     });
 
+    this.formFiltrarListagem.get('termo').valueChanges.subscribe((value: string) => {
+      this.termo = value;
+      this.resetarConsulta();
+    });
+
+    this.formFiltrarListagem.get('genero').valueChanges.subscribe((value: string) => {
+      this.genero = value;
+      this.resetarConsulta();
+    });
+
     this.listarFilmes();
 
     this.generos = ['Ação', 'Romance', 'Aventura', 'Terror', 'Ficção científica', 'Comédia', 'Aventura', 'Drama']
@@ -41,8 +54,14 @@ export class ListagemFilmesComponent implements OnInit {
   private listarFilmes(): void {
     this.page++;
     this.filmesService
-      .listar(this.page, this.limitFilmsByPage)
+      .listar(this.page, this.limitFilmsByPage, this.termo, this.genero)
       .subscribe((filmes: Filme[]) => this.filmes = [...this.filmes, ...filmes]);
+  }
+
+  private resetarConsulta(): void {
+    this.page = 0;
+    this.filmes = [];
+    this.listarFilmes();
   }
 
 }
