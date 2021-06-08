@@ -28,6 +28,7 @@
   class="home-content"
   infiniteScroll
   (scrolled)="onScroll()"
+  *ngIf="filmes.length; else semRegistros"
 >
   <mat-card class="home-card" *ngFor="let filme of filmes">
     <mat-card-header>
@@ -35,12 +36,17 @@
       <mat-card-title>{{ filme.titulo }}</mat-card-title>
       <mat-card-subtitle>{{ filme.genero }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="filme.urlFoto" [alt]="filme.titulo">
-    <mat-card-content>
-      <p>{{ filme.descricao }}</p>
+    <img mat-card-image [src]="filme.urlFoto || semFoto" [alt]="filme.titulo">
+    <mat-card-content style="margin-top: 15px;">
+      <p class="quebrar-linha">{{ filme.descricao || 'Nenhuma descrição informada.' }}</p>
     </mat-card-content>
     <mat-card-actions>
       <button color="accent" mat-raised-button>ABRIR</button>
     </mat-card-actions>
   </mat-card>
 </div>
+
+
+<ng-template #semRegistros>
+  <h1 class="text-center">Nenhum registro encontrado!</h1>
+</ng-template>

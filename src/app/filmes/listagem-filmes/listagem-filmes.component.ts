@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FilmesService } from 'src/app/core/filmes.service';
 import { ConfigParams } from 'src/app/shared/models/config-params';
 import { Filme } from 'src/app/shared/models/filme';
+import { debounceTime } from 'rxjs/operators'
 
 @Component({
   selector: 'dio-listagem-filmes',
@@ -11,6 +12,8 @@ import { Filme } from 'src/app/shared/models/filme';
 })
 export class ListagemFilmesComponent implements OnInit {
 
+  readonly semFoto = 'https://via.placeholder.com/182x268.png?text=Banner+not+found';
+
   filmes: Filme[] = [];
   generos: string[] = [];
 
@@ -18,13 +21,6 @@ export class ListagemFilmesComponent implements OnInit {
     page: 0,
     limit: 4
   };
-
-  //page = 0
-  //readonly limitFilmsByPage = 4;
-
-  //termo: string;
-  //genero: string;
-
 
   formFiltrarListagem: FormGroup;
 
@@ -39,10 +35,12 @@ export class ListagemFilmesComponent implements OnInit {
       genero: ['']
     });
 
-    this.formFiltrarListagem.get('termo').valueChanges.subscribe((value: string) => {
-      this.config.search = value;
-      this.resetarConsulta();
-    });
+    this.formFiltrarListagem.get('termo').valueChanges
+      .pipe(debounceTime(500))
+      .subscribe((value: string) => {
+        this.config.search = value;
+        this.resetarConsulta();
+      });
 
     this.formFiltrarListagem.get('genero').valueChanges.subscribe((value: string) => {
       this.config.field = { tipo: 'genero', valor: value };
