@@ -19,6 +19,10 @@ export class FilmesService {
   ) { }
 
   salvar(filme: Filme): Observable<Filme> {
+    if (filme.id) {
+      return this.http.put<Filme>(`${apiUrl}/filmes/${filme.id}`, filme);
+    }
+
     return this.http.post<Filme>(`${apiUrl}/filmes`, filme);
   }
 

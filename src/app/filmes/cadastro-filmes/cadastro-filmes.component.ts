@@ -54,6 +54,8 @@ export class CadastroFilmesComponent implements OnInit {
     if (this.cadastro.invalid) return;
 
     const filmToSave = this.cadastro.getRawValue() as Filme;
+    filmToSave.id = this.id;
+    
     this.salvar(filmToSave);
   }
 
@@ -82,8 +84,8 @@ export class CadastroFilmesComponent implements OnInit {
       () => {
         const config = {
           data: {
-            titulo: 'Erro ao cadastrar o filme!',
-            mensagem: 'Não foi possível cadastrar o filme.',
+            titulo: 'Erro ao salvar o filme!',
+            mensagem: 'Não foi possível salvar o filme.',
             labelBotaoSucesso: 'Fechar',
             corBotaoSucesso: 'warn'
           } as Alerta
