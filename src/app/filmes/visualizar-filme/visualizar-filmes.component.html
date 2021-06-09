@@ -7,6 +7,13 @@
   <img mat-card-image [src]="filme.urlFoto || semFoto">
 </mat-list>
 
+<mat-card>
+  <mat-card-actions>
+    <button color="accent" mat-raised-button>Editar</button>
+    <button color="warn" mat-raised-button (click)="excluir()">Excluir</button>
+  </mat-card-actions>
+</mat-card>
+
 <ng-template #filmeNaoEncontrado>
   <h1 class="text-center">Filme não encontrado!</h1>
 </ng-template>

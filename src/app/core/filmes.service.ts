@@ -31,4 +31,8 @@ export class FilmesService {
     return this.http.get<Filme>(`${apiUrl}/filmes/${filmeId}`);
   }
 
+  excluir(filmeId: number): Observable<void> {
+    return this.http.delete<void>(`${apiUrl}/filmes/${filmeId}`);
+  }
+
 }
